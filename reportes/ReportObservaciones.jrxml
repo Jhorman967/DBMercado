@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0f519be9-a9d8-4c23-98e5-9032b3221c9d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     obervacione.`Cod_student` AS obervacione_Cod_student,
+     obervacione.`Descripcion` AS obervacione_Descripcion,
+     estudiantes.`fst_nombre` AS estudiantes_fst_nombre,
+     estudiantes.`apellido` AS estudiantes_apellido
+FROM
+     `estudiantes` estudiantes INNER JOIN `obervacione` obervacione ON estudiantes.`id_estudiante` = obervacione.`Cod_student`]]>
+	</queryString>
+	<field name="obervacione_Cod_student" class="java.lang.Integer"/>
+	<field name="obervacione_Descripcion" class="java.lang.String"/>
+	<field name="estudiantes_fst_nombre" class="java.lang.String"/>
+	<field name="estudiantes_apellido" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="392" y="0" width="163" height="20" uuid="8834b3a9-f7df-4184-bd5f-0c3e03c0a4b7"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="26" y="10" width="81" height="59" uuid="18136a6c-c531-4342-9d45-6122a0614698"/>
+				<imageExpression><![CDATA["C:\\Users\\Jhorman\\Downloads\\CRUD-Colegio-master\\CRUD-Colegio-master\\src\\Images\\GWS_logo - copia.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="193" y="20" width="199" height="42" uuid="fc4cfac6-2cfd-42d1-9d88-0bc2f53eb776"/>
+				<textElement>
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[Observaciones]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="2" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="45" height="20" uuid="49825e95-45ab-4a91-9764-67fab68f6150"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Codg Estudiante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="0" width="213" height="20" uuid="92874f6d-4e1f-4bcb-8e2e-6e2dee7814ae"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Observacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="0" width="138" height="20" uuid="ee9940d7-a1b6-47d8-a116-9305b326fc9e"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="183" y="0" width="138" height="20" uuid="ec4587d4-d197-4e2c-a40b-f7c0ab4c60b5"/>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="45" height="20" uuid="2372034a-2508-4e1b-93b7-00e3279290ae"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{obervacione_Cod_student}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="339" y="0" width="216" height="20" uuid="e722fca9-e760-4b05-bcdb-2732b62b3f8d"/>
+				<textFieldExpression><![CDATA[$F{obervacione_Descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="45" y="0" width="138" height="20" uuid="e5722c0a-b991-4acc-b5fb-1e6f5af15523"/>
+				<textFieldExpression><![CDATA[$F{estudiantes_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="183" y="0" width="138" height="20" uuid="8f744909-4c75-40c6-ba9b-3fc274aa6760"/>
+				<textFieldExpression><![CDATA[$F{estudiantes_fst_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="299" y="0" width="40" height="20" uuid="69bf4271-e090-49cd-bdd0-5c91853f96a0"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="219" y="0" width="80" height="20" uuid="a5317276-61a2-446f-a6c0-075c8a14246b"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
